@@ -1,4 +1,4 @@
-import { podcasts } from "./data.js";
+import { podcasts } from "../data.js";
 import { createModal } from "./src/createModal.js";
 import { createGrid } from "./src/createGrid.js";
 

@@ -1,6 +1,6 @@
 import { podcasts } from "../data.js";
-import { createModal } from "./src/createModal.js";
-import { createGrid } from "./src/createGrid.js";
+import { createModal } from "./createModal.js";
+import { createGrid } from "./createGrid.js";
 
 /**
  * Initializes the podcast application.

@@ -1,5 +1,5 @@
-import { GenreService } from "../src/genreService.js";
-import { DateUtils } from "../src/dateUtils.js";
+import { GenreService } from "./genreService.js";
+import { DateUtils } from "./dateUtils.js";
 import { seasons } from "../data.js";
 
 /**

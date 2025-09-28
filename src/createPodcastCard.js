@@ -31,6 +31,17 @@ export const createPodcastCard = (podcast, onClick) => {
   return card;
 };
 
+/**
+ * A custom Web Component representing a podcast preview card.
+ *
+ * When the card is clicked, it dispatches a `podcast-selected` event with the
+ * podcast’s data in `event.detail.podcast`. The data comes from the internal
+ * `_podcast` property or, if that’s empty, from the element’s attributes.
+ *
+ * @element podcast-card
+ * @fires podcast-selected - Fired when the card is clicked. 
+ *   `detail.podcast` contains the associated podcast object.
+ */
 class PodcastCard extends HTMLElement {
   constructor() {
     super();
@@ -47,6 +58,15 @@ class PodcastCard extends HTMLElement {
     });
   }
 
+  /**
+ * Lifecycle and attribute handling for the <podcast-card> component.
+ *
+ * - `connectedCallback()` is called automatically when the element is added
+ *   to the DOM and triggers an initial render.
+ * - `observedAttributes` declares which attributes should be watched for changes.
+ * - `attributeChangedCallback()` re-renders the component whenever one of the
+ *   observed attributes changes to a new value.
+ */
   connectedCallback() {
     this.render();
   }
@@ -61,6 +81,15 @@ class PodcastCard extends HTMLElement {
     }
   }
 
+  /**
+ * Gets or sets the podcast data object for this <podcast-card>.
+ *
+ * - Setting `podcast` updates the internal `_podcast` property
+ *   and re-renders the card.
+ * - Getting `podcast` returns the currently stored podcast object.
+ *
+ * @type {Object|null}
+ */
   // Accept podcast object via property
   set podcast(data) {
     this._podcast = data;
@@ -70,6 +99,15 @@ class PodcastCard extends HTMLElement {
     return this._podcast;
   }
 
+  /**
+ * Builds a plain object from the element’s current attributes.
+ * Used as a fallback when no podcast object has been assigned.
+ *
+ * @private
+ * @returns {{title: string|null, image: string|null, description: string|null,
+ *            genres: string|null, seasons: string|null, updated: string|null}}
+ * An object containing the attribute values.
+ */
   // Convert attributes to an object for fallback
   _attributesToObject() {
     return {
@@ -82,6 +120,17 @@ class PodcastCard extends HTMLElement {
     };
   }
 
+  /**
+ * Renders the visual content of the <podcast-card>.
+ *
+ * - Uses the `_podcast` property if present; otherwise converts
+ *   the element’s attributes into an object for data.
+ * - Safely falls back to default values for missing fields.
+ * - Formats the `genres` array into a comma-separated string.
+ * - Formats the `updated` date into a readable local date string.
+ *
+ * @returns {void}
+ */
   render() {
     // Prefer property data if provided
     const data = this._podcast || this._attributesToObject();
@@ -101,6 +150,25 @@ class PodcastCard extends HTMLElement {
         })
       : '';
 
+      /**
+ * Updates the shadow DOM for <podcast-card> with styled HTML.
+ *
+ * - Injects internal `<style>` rules for a responsive card layout.
+ * - Displays the podcast’s image, title, genres, seasons, and last-updated date.
+ * - Uses template literals to insert the current property/attribute values.
+ *
+ * After defining the class, the component is registered under the name
+ * `podcast-card` so it can be used directly in HTML.
+ *
+ * @example
+ * <podcast-card
+ *   title="My Show"
+ *   image="cover.jpg"
+ *   genres="Comedy"
+ *   seasons="3"
+ *   updated="2024-09-01"
+ * ></podcast-card>
+ */
     this.shadowRoot.innerHTML = `
       <style>
         :host {

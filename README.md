@@ -1,64 +1,40 @@
-# DJS02 – Web Component: Podcast Preview
+# PodcastPreview Web Component
 
-## Overview
+## What This Is
 
-In this project, you will build a reusable and encapsulated **custom HTML element** that displays a podcast preview. The component must follow the **Web Component standard**, using `customElements.define()` and should work independently from the main application logic. This component will enhance modularity, promote reuse, and reduce code duplication across the app.
+The **PodcastPreview Web Component** is a small piece of a website that shows a preview of a podcast. It looks like a little card with the podcast’s picture, name, categories (genres), number of seasons, and when it was last updated. When someone clicks on it, it can open a bigger view or do something else you set up.
 
-The component should be designed to **accept podcast data via attributes or properties**, display relevant UI elements (such as title, cover image, and genres), and **communicate with the main application** through custom events.
+## Why It Exists
 
----
+This project was made to make it easy for anyone building a website to show podcast previews in a neat and consistent way. Instead of creating the same layout over and over, you can just use this ready‑made piece.
 
-## Core Objectives
+## What It Uses
 
-### Web Component Functionality
+You don’t have to install anything complicated. It’s built with:
 
-- Create a **custom HTML element** using `customElements.define()`.
-- Accept data (cover image, title, genres, number of seasons, and last updated date) **as attributes or properties**.
-- Keep the component **stateless** and reliant on external data provided by the parent.
-- Use **Shadow DOM** for style and logic encapsulation to avoid global conflicts.
-- Trigger a **custom event** when a user interacts with the component (e.g., clicking), so that the parent application can open a modal or take other actions without tightly coupling to the component’s logic.
+* HTML – the language of web pages.
+* CSS – for how things look (colors, layout, fonts).
+* JavaScript – to make it interactive when people click on it.
 
----
+## What It Can Do
 
-## UI/UX Requirements
+* Shows a podcast’s picture, title, categories, number of seasons, and last updated date.
+* Looks good on phones and computers (it’s responsive).
+* Works with keyboard as well as mouse clicks for better accessibility.
+* Sends out a signal when someone clicks on it, so you can open a bigger view or take another action.
 
-- The component should render a clean and **visually consistent preview** of each podcast.
-- Display:
-  - Podcast **cover image**
-  - Podcast **title**
-  - **Genre names**
-  - **Number of seasons**
-  - **Last updated** in a human-readable format
-- The component must be **responsive**, and match the overall app design on desktop and mobile.
-- On click, the component must notify the parent app to **open a modal** or navigate to details.
+## How To Use It (Step by Step)
 
----
+1. **Get the Files**
+   Download the two files: one is the component, the other is a sample page showing it in action.
 
-## Code Quality & Maintainability
+2. **Open the Demo Page**
+   Double‑click on the demo page in your folder. It will open in your web browser and you’ll see example podcast cards.
 
-- Write clear, consistent, and modular code.
-- Follow **functional and object-oriented programming** patterns.
-- Document major functions using **JSDoc comments** (parameters, return types, etc.).
-- Use consistent **code formatting** across HTML, CSS, and JavaScript.
+3. **Use It On Your Own Page**
+   If you have a web page, include the component and add the podcast card where you want it on your page. This will show a card with your own podcast info.
 
----
+4. **Making It Do Something When Clicked**
+   You can set it up so that when people click on the podcast card, a bigger view or another action happens.
 
-## Technical Constraints
-
-- Do **not** use any third-party frameworks for creating the web component.
-- Use **native JavaScript (ES6+)**, HTML, and CSS.
-- No page reloads or navigation.
-- Ensure compatibility with modern browsers.
-
----
-
-## Deliverables
-
-- A working custom Web Component file (e.g., `PodcastPreview.js`).
-- An HTML demo page showcasing the component usage.
-- A `README.md` file with:
-  - How to use and register the component
-  - Instructions for passing data
-  - How to listen for interaction events
-
----
+That’s it! You now have a simple way to display podcast previews on your site without needing to build them from scratch.
